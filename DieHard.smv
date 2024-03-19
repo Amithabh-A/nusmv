@@ -1,0 +1,23 @@
+MODULE main
+VAR
+  small : array 0 .. 3 of boolean;
+  big   : array 0 .. 5 of boolean;
+  transition : enumeration {idle,FillSmall, FillBig, EmptySmall, EmptyBig, SmallToBig, 
+                            BigToSmall};
+ASSIGN
+  init(small[0]) := TRUE;
+  init(small[1]) := FALSE;
+  init(small[2]) := FALSE;
+  init(small[3]) := FALSE;
+  init(big[0]) := TRUE;
+  init(big[1]) := FALSE;
+  init(big[2]) := FALSE;
+  init(big[3]) := FALSE;
+  init(big[4]) := FALSE;
+  init(big[5]) := FALSE;
+  init(transition) := case
+    idle : _ 
+    FillSmall : 
+
+
+  next()

@@ -1,0 +1,28 @@
+MODULE main
+
+VAR
+  small : 0..3;
+  big   : 0..5;
+
+ASSIGN 
+  init(small) := 0;
+  init(big)   := 0;
+
+TRANS
+      (next(small) = 3     & next(big) = big)
+    | (next(small) = small & next(big) = 5  )
+    | (next(small) = 0     & next(big) = big)
+    | (next(small) = small & next(big) = 0  )
+    | 
+    (case
+      (small + big <= 5) : (next(small) = 0               & next(big) = small + big );
+      TRUE               : (next(small) = big + small - 5 & next(big) = 5           );
+    esac)
+    | 
+    case
+      (small + big <= 3) : (next(small) = small + big     & next(big) = 0           );
+      TRUE               : (next(small) = 3               & next(big) = big+small - 3);
+    esac
+
+LTLSPEC
+  G big != 4;
